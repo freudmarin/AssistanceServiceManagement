@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout disableAnsi="false"  pattern="%highlight{%d{HH:mm:ss.SSS} %-5level %logger{36}.%M() @%L - %msg%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=white, DEBUG=green bold, TRACE=blue}"/>
+        </Console>
+        <RollingFile name="rollingFile"
+                     fileName="api.log"
+                     filePattern="./logs/$${date:yyyy-MM}/management-%d{yyyy-MM-dd}-%i.log.gz"
+                     append="true">
+            <PatternLayout>
+                <pattern>%d{ISO8601} %-5p [%t] %c: %m%n%throwable</pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="50 MB" />
+                <!--    <TimeBasedTriggeringPolicy interval="1"/> -->
+            </Policies>
+            <!--            <DefaultRolloverStrategy fileIndex="nomax" />-->
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!-- LOG everything at INFO level -->
+        <Root level="ERROR">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="rollingFile" />
+        </Root>
+        <Logger name="org.hibernate" level="WARM" additivity="false">
+            <AppenderRef ref="rollingFile" />
+            <AppenderRef ref="console" />
+        </Logger>
+    </Loggers>
+</Configuration>
