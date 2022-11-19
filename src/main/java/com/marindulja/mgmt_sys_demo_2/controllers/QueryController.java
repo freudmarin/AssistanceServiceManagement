@@ -2,6 +2,8 @@ package com.marindulja.mgmt_sys_demo_2.controllers;
 
 import com.marindulja.mgmt_sys_demo_2.models.RepairStatus;
 import com.marindulja.mgmt_sys_demo_2.repositories.IRepairRepository;
+import com.marindulja.mgmt_sys_demo_2.specifications.CustomRepairRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,20 +16,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/query")
+@RequiredArgsConstructor
 @Log4j2
 public class QueryController {
-    final IRepairRepository repairRepository;
+    private final IRepairRepository repairRepository;
 
-    public QueryController(IRepairRepository repairRepository) {
-        this.repairRepository = repairRepository;
-    }
+    private final CustomRepairRepository spec;
 
     @GetMapping(value = "/totalNumberOfCompletedRepairsBetween")
-    public Integer totalNumberOfCompletedRepairsOverPeriodOfTime(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+    public Long  totalNumberOfCompletedRepairsOverPeriodOfTime(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
                                                                                 @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         log.info("Executing query");
 
-        return repairRepository.countRepairByStatusAndUpdatedDateTimeBetween(RepairStatus.COMPLETED, start, end);
+        return repairRepository.count(spec.repairByStatusAndUpdatedDateTimeBetween(RepairStatus.COMPLETED, start, end));
     }
 
     @GetMapping(value = "/totalNumberOfRejectedRepairsBetween")

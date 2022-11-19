@@ -20,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public String getRepairStatus(String caseNumber) {
-       return repairRepository.findRepairStatusByCaseNumber(caseNumber);
+       return repairRepository.findOne(spec.findRepairStatusByCaseNumber(caseNumber)).get().getStatus().toString();
     }
 
     @Override
