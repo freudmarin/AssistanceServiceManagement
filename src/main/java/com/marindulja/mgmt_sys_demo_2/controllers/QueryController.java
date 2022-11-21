@@ -1,5 +1,8 @@
 package com.marindulja.mgmt_sys_demo_2.controllers;
 
+import com.marindulja.mgmt_sys_demo_2.dto.TechWithCountDto;
+import com.marindulja.mgmt_sys_demo_2.dto.TechnicianDto;
+import com.marindulja.mgmt_sys_demo_2.models.Repair;
 import com.marindulja.mgmt_sys_demo_2.models.RepairStatus;
 import com.marindulja.mgmt_sys_demo_2.repositories.IRepairRepository;
 import com.marindulja.mgmt_sys_demo_2.specifications.CustomRepairRepository;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/query")
@@ -32,14 +36,20 @@ public class QueryController {
     }
 
     @GetMapping(value = "/totalNumberOfRejectedRepairsBetween")
-    public Integer totalNumberOfRejectedRepairsOverPeriodOfTime(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+    public Long  totalNumberOfRejectedRepairsOverPeriodOfTime(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
                                                                 @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
-        return repairRepository.countRepairByStatusAndUpdatedDateTimeBetween(RepairStatus.CANCELED, start, end);
+        return repairRepository.count(spec.repairByStatusAndUpdatedDateTimeBetween(RepairStatus.CANCELED, start, end));
     }
 
     @GetMapping(value = "/numberOfRepairsByEachTechnician")
-    public List<Object> numberOfRepairsProcessedByEachTechnicianOverPeriodOfTime(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
-                                                                                 @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
-        return repairRepository.countRepairsByEachTechnicianOverTime(start, end);
+    public List<TechWithCountDto> numberOfRepairsProcessedByEachTechnicianOverPeriodOfTime(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                                                                           @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
+        return spec.countRepairsByEachTechnicianOverTime2(start, end);
+    }
+
+    @GetMapping(value = "/techsWithMoreThan3Repairs")
+    public List<TechnicianDto> techsWithMoreThan3Repairs(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                                                                        @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
+        return spec.allTechsWithMoreThan3RepairsWithCount(start, end);
     }
 }

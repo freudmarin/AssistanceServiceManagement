@@ -69,6 +69,14 @@
 			<version>4.8.0</version>
 		</dependency>
 		<!-- End For testing -->
+
+		<!--For metamodel -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+			<version>5.3.7.Final</version>
+		</dependency>
+		<!--End for metamodel -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
