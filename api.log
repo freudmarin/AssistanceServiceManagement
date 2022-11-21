@@ -1,0 +1,27 @@
+2022-11-21T18:01:20,139 INFO  [main] com.marindulja.mgmt_sys_demo_2.MgmtSysDemo2Application: Starting MgmtSysDemo2Application using Java 17.0.5 on SN-AL-LPT014 with PID 20828 (C:\Users\m.dulja\Downloads\mgmt_sys_demo_2\target\classes started by m.dulja in C:\Users\m.dulja\Downloads\mgmt_sys_demo_2)
+2022-11-21T18:01:20,146 INFO  [main] com.marindulja.mgmt_sys_demo_2.MgmtSysDemo2Application: No active profile set, falling back to 1 default profile: "default"
+2022-11-21T18:01:20,518 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-21T18:01:20,576 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 49 ms. Found 4 JPA repository interfaces.
+2022-11-21T18:01:20,864 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer: Tomcat initialized with port(s): 8080 (http)
+2022-11-21T18:01:20,874 INFO  [main] org.apache.coyote.http11.Http11NioProtocol: Initializing ProtocolHandler ["http-nio-8080"]
+2022-11-21T18:01:20,875 INFO  [main] org.apache.catalina.core.StandardService: Starting service [Tomcat]
+2022-11-21T18:01:20,875 INFO  [main] org.apache.catalina.core.StandardEngine: Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-11-21T18:01:20,932 INFO  [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]: Initializing Spring embedded WebApplicationContext
+2022-11-21T18:01:20,932 INFO  [main] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext: Root WebApplicationContext: initialization completed in 759 ms
+2022-11-21T18:01:21,022 INFO  [main] org.hibernate.jpa.internal.util.LogHelper: HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-21T18:01:21,048 INFO  [main] org.hibernate.Version: HHH000412: Hibernate ORM core version 5.6.12.Final
+2022-11-21T18:01:21,147 INFO  [main] org.hibernate.annotations.common.Version: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-21T18:01:21,210 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Starting...
+2022-11-21T18:01:21,449 INFO  [main] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Start completed.
+2022-11-21T18:01:21,458 INFO  [main] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2022-11-21T18:01:21,851 INFO  [main] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-21T18:01:21,856 INFO  [main] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-21T18:01:22,074 INFO  [main] com.marindulja.mgmt_sys_demo_2.config.DataGeneration: Starting to generate admin!
+2022-11-21T18:01:22,337 WARN  [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-21T18:01:22,388 INFO  [main] org.springframework.security.web.DefaultSecurityFilterChain: Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@57d7c511, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@811d8d6, org.springframework.security.web.context.SecurityContextPersistenceFilter@1f235a0a, org.springframework.security.web.header.HeaderWriterFilter@4c8afba, org.springframework.web.filter.CorsFilter@7f57a7a4, org.springframework.security.web.authentication.logout.LogoutFilter@2148b47e, com.marindulja.mgmt_sys_demo_2.security.JwtAuthenticationFilter@60fe75f7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a0b4955, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@24558113, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6dcc7696, org.springframework.security.web.session.SessionManagementFilter@3f2ab6ec, org.springframework.security.web.access.ExceptionTranslationFilter@447630c4, org.springframework.security.web.access.intercept.AuthorizationFilter@3bac86a3]
+2022-11-21T18:01:22,525 INFO  [main] org.apache.coyote.http11.Http11NioProtocol: Starting ProtocolHandler ["http-nio-8080"]
+2022-11-21T18:01:22,537 INFO  [main] org.springframework.boot.web.embedded.tomcat.TomcatWebServer: Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-21T18:01:22,545 INFO  [main] com.marindulja.mgmt_sys_demo_2.MgmtSysDemo2Application: Started MgmtSysDemo2Application in 2.62 seconds (JVM running for 3.216)
+2022-11-21T18:02:46,575 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-21T18:02:46,576 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Shutdown initiated...
+2022-11-21T18:02:46,578 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource: HikariPool-1 - Shutdown completed.
