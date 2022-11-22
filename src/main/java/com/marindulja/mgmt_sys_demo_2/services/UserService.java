@@ -4,7 +4,6 @@ package com.marindulja.mgmt_sys_demo_2.services;
 import com.marindulja.mgmt_sys_demo_2.dto.UserDto;
 import com.marindulja.mgmt_sys_demo_2.exception.ResourceNotFoundException;
 import com.marindulja.mgmt_sys_demo_2.models.User;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,8 +29,11 @@ public interface UserService extends UserDetailsService {
     User findByUsername(String username) throws ResourceNotFoundException;
 
     UserDto addUser(UserDto user);
+
     ResponseEntity<UserDto> getUserById(long id);
+
     ResponseEntity<UserDto> updateUserById(long id, UserDto user);
+
     ResponseEntity<HttpStatus> deleteUserById(long id);
 
 }

@@ -2,9 +2,7 @@ package com.marindulja.mgmt_sys_demo_2.controllers;
 
 import com.marindulja.mgmt_sys_demo_2.dto.RepairRequest;
 import com.marindulja.mgmt_sys_demo_2.models.Repair;
-import com.marindulja.mgmt_sys_demo_2.models.RepairStatus;
 import com.marindulja.mgmt_sys_demo_2.services.TechnicianService;
-import com.marindulja.mgmt_sys_demo_2.specifications.CustomRepairRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

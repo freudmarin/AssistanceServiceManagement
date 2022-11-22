@@ -66,7 +66,7 @@ public class CustomRepairRepository {
         final List<Tuple> resultList = entityManager.createQuery(query).getResultList();
         return resultList.stream()
                 .collect(toMap(
-                        t -> t.get(0,String.class),
+                        t -> t.get(0, String.class),
                         t -> t.get(1, Long.class))
                 );
     }
@@ -96,14 +96,14 @@ public class CustomRepairRepository {
                 .where(criteriaBuilder.equal(subqueryRoot.get(Repair_.technician), techRoot.get(User_.id)),
                         criteriaBuilder.between(subqueryRoot.get(Repair_.updatedDateTime), start, end))
                 .groupBy(subqueryRoot.get(Repair_.technician))
-                        .having(criteriaBuilder.gt(techsCount,3));
+                .having(criteriaBuilder.gt(techsCount, 3));
 
         criteriaQuery.select(criteriaBuilder.construct(
-                        TechnicianDto.class,
-                        techRoot.get(User_.fullName),
-                        techRoot.get(User_.username),
-                        techRoot.get(User_.password)
-                        )).where(criteriaBuilder.exists(subquery));
+                TechnicianDto.class,
+                techRoot.get(User_.fullName),
+                techRoot.get(User_.username),
+                techRoot.get(User_.password)
+        )).where(criteriaBuilder.exists(subquery));
         List<TechnicianDto> techList = this.entityManager.createQuery(criteriaQuery)
                 .getResultList();
         return techList;
@@ -114,7 +114,7 @@ public class CustomRepairRepository {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<TechnicianDto> criteriaQuery = criteriaBuilder.createQuery(TechnicianDto.class);
         Root<Repair> repairRoot = criteriaQuery.from(Repair.class);
-        Join<Repair,User> repairUserJoin = repairRoot.join(Repair_.technician);
+        Join<Repair, User> repairUserJoin = repairRoot.join(Repair_.technician);
         Subquery<Long> subquery = criteriaQuery.subquery(Long.class);
         Root<Repair> subqueryRoot = subquery.from(Repair.class);
         Expression<Long> techsCount = criteriaBuilder.count(subqueryRoot.get(Repair_.technician));
@@ -122,7 +122,7 @@ public class CustomRepairRepository {
                 .where(criteriaBuilder.equal(subqueryRoot.get(Repair_.technician), repairUserJoin.get(User_.id)),
                         criteriaBuilder.between(subqueryRoot.get(Repair_.updatedDateTime), start, end))
                 .groupBy(subqueryRoot.get(Repair_.technician))
-                .having(criteriaBuilder.gt(techsCount,1));
+                .having(criteriaBuilder.gt(techsCount, 1));
 
         criteriaQuery.select(criteriaBuilder.construct(
                 TechnicianDto.class,

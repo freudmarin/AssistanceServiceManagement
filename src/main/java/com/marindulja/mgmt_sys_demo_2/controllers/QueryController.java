@@ -2,7 +2,6 @@ package com.marindulja.mgmt_sys_demo_2.controllers;
 
 import com.marindulja.mgmt_sys_demo_2.dto.TechWithCountDto;
 import com.marindulja.mgmt_sys_demo_2.dto.TechnicianDto;
-import com.marindulja.mgmt_sys_demo_2.models.Repair;
 import com.marindulja.mgmt_sys_demo_2.models.RepairStatus;
 import com.marindulja.mgmt_sys_demo_2.repositories.IRepairRepository;
 import com.marindulja.mgmt_sys_demo_2.specifications.CustomRepairRepository;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/query")

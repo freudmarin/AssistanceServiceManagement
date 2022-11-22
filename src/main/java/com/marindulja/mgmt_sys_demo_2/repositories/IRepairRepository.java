@@ -1,5 +1,4 @@
-package  com.marindulja.mgmt_sys_demo_2.repositories;;
-
+package  com.marindulja.mgmt_sys_demo_2.repositories;
 
 import com.marindulja.mgmt_sys_demo_2.models.Repair;
 import com.marindulja.mgmt_sys_demo_2.models.RepairStatus;
@@ -9,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public interface IRepairRepository extends JpaRepository<Repair, Long>, JpaSpecificationExecutor<Repair> {

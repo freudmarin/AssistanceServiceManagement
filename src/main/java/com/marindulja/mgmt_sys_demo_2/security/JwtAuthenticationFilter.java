@@ -1,4 +1,4 @@
-package  com.marindulja.mgmt_sys_demo_2.security;
+package com.marindulja.mgmt_sys_demo_2.security;
 
 import com.marindulja.mgmt_sys_demo_2.repositories.IUserRepository;
 import com.marindulja.mgmt_sys_demo_2.services.UserDetailsServiceImpl;

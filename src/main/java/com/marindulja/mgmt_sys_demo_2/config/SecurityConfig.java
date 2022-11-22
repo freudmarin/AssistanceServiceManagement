@@ -17,21 +17,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
     @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter(){
-        return  new JwtAuthenticationFilter();
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
     }
 
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors().and().csrf().disable();
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.authorizeHttpRequests().antMatchers("/api/auth/**").
                 permitAll().antMatchers(
-                "/api/users/**").hasRole("ROLE_ADMIN").antMatchers(
+                        "/api/users/**").hasRole("ROLE_ADMIN").antMatchers(
                         "/api/acceptance/**").hasRole("ROLE_ACCEPTANCE").antMatchers(
                         "/api/technician/**").hasRole("ROLE_TECHNICIAN").antMatchers(
                         "/api/customer/**").permitAll().antMatchers("/api/query/**").permitAll()
