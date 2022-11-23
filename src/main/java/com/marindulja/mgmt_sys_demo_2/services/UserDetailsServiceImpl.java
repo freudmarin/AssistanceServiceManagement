@@ -56,8 +56,6 @@ public class UserDetailsServiceImpl implements UserService {
                 );
     }
 
-
-    //shkruaj unit test
     public UserDto addUser(UserDto userToBeAddedDto) {
         User user = new User();
         user.setUsername(userToBeAddedDto.getUsername());

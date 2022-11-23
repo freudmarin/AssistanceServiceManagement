@@ -2,7 +2,7 @@ package com.marindulja.mgmt_sys_demo_2.controllers;
 
 import com.marindulja.mgmt_sys_demo_2.dto.UserDto;
 import com.marindulja.mgmt_sys_demo_2.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +11,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@RequiredArgsConstructor
 public class UsersController {
-
-    @Autowired
-    private UserService userDetailsService;
+    private  final UserService userDetailsService;
 
     @PostMapping("/addUser")
     public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {

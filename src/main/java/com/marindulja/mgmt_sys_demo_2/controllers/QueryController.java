@@ -48,6 +48,12 @@ public class QueryController {
     @GetMapping(value = "/techsWithMoreThan3Repairs")
     public List<TechnicianDto> techsWithMoreThan3Repairs(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
                                                                                         @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
+        return spec.allTechsWithMoreThan3Repairs(start, end);
+    }
+
+    @GetMapping(value = "/techsWithMoreThan3RepairsWithCount")
+    public List<TechnicianDto> techsWithMoreThan3RepairsWithCount(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                                         @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         return spec.allTechsWithMoreThan3RepairsWithCount(start, end);
     }
 }
