@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserService {
     private final IUserRepository userRepository;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    private ModelMapper mapper = new ModelMapper();
+    private final  ModelMapper mapper = new ModelMapper();
 
 
     public UserDetailsServiceImpl(@Qualifier("IUserRepository") IUserRepository userRepository) {
@@ -44,7 +44,7 @@ public class UserDetailsServiceImpl implements UserService {
     @Override
     public List<UserDto> getAllUsers() {
         List<User> users = userRepository.findAll();
-        return users.stream().map(user -> mapToDTO(user)).collect(Collectors.toList());
+        return users.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     @Override
@@ -132,12 +132,10 @@ public class UserDetailsServiceImpl implements UserService {
     }
 
     private UserDto mapToDTO(User user) {
-        UserDto userDto = mapper.map(user, UserDto.class);
-        return userDto;
+        return mapper.map(user, UserDto.class);
     }
 
     private User mapToEntity(UserDto userDto) {
-        User user = mapper.map(userDto, User.class);
-        return user;
+        return mapper.map(userDto, User.class);
     }
 }

@@ -29,7 +29,7 @@ public class UserServiceTests {
     @Test
     @DisplayName("Should Save a new user")
     void shouldSaveUser() {
-       UserDto user = UserDto.builder()
+        UserDto user = UserDto.builder()
                 .fullName("Marin Dulja")
                 .username("acceptance 1")
                 .role(UserRole.ROLE_ACCEPTANCE)
@@ -38,11 +38,11 @@ public class UserServiceTests {
         User userMocked = User.builder().id(1L).fullName("Marin Dulja").username("acceptance 1").role(UserRole.ROLE_ACCEPTANCE)
                 .password("12345").build();
         when(userRepository.save(any(User.class))).thenReturn(userMocked);
-        UserDto userDtoSaved =  userDetailsService.addUser(user);
+        UserDto userDtoSaved = userDetailsService.addUser(user);
         assertNotNull(userDtoSaved);
         assertEquals(userMocked.getFullName(), userDtoSaved.getFullName());
         assertEquals(userMocked.getUsername(), userDtoSaved.getUsername());
         assertEquals(userMocked.getPassword(), userDtoSaved.getPassword());
-        assertEquals(userMocked.getRole(),userDtoSaved.getRole());
+        assertEquals(userMocked.getRole(), userDtoSaved.getRole());
     }
 }

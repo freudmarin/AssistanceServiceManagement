@@ -1,7 +1,9 @@
 package com.marindulja.mgmt_sys_demo_2;
 
-import com.marindulja.mgmt_sys_demo_2.dto.UserDto;
-import com.marindulja.mgmt_sys_demo_2.models.*;
+import com.marindulja.mgmt_sys_demo_2.models.Customer;
+import com.marindulja.mgmt_sys_demo_2.models.Repair;
+import com.marindulja.mgmt_sys_demo_2.models.RepairStatus;
+import com.marindulja.mgmt_sys_demo_2.models.UserRole;
 import com.marindulja.mgmt_sys_demo_2.repositories.IRepairRepository;
 import com.marindulja.mgmt_sys_demo_2.repositories.ITechnicianRepository;
 import com.marindulja.mgmt_sys_demo_2.services.TechnicianService;
@@ -12,23 +14,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
