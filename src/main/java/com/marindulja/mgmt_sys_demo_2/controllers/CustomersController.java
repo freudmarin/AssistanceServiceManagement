@@ -19,8 +19,8 @@ public class CustomersController {
     }
 
     @PostMapping("/pay/{caseNumber}")
-    public ResponseEntity pay(@PathVariable("caseNumber") String caseNumber, @RequestBody PayDto payDto) {
+    public ResponseEntity<HttpStatus> pay(@PathVariable("caseNumber") String caseNumber, @RequestBody PayDto payDto) {
         customerService.pay(caseNumber, payDto.getMoney());
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

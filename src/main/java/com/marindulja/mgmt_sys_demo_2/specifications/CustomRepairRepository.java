@@ -4,6 +4,8 @@ package com.marindulja.mgmt_sys_demo_2.specifications;
 import com.marindulja.mgmt_sys_demo_2.dto.TechWithCountDto;
 import com.marindulja.mgmt_sys_demo_2.dto.TechnicianDto;
 import com.marindulja.mgmt_sys_demo_2.models.*;
+import com.marindulja.mgmt_sys_demo_2.models.Repair_;
+import com.marindulja.mgmt_sys_demo_2.models.User_;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;

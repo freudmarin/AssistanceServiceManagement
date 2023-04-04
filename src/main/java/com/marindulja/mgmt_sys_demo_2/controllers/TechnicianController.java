@@ -15,17 +15,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TechnicianController {
     private final TechnicianService technicianService;
-
-
     @GetMapping("/viewPendingRepairs")
     public List<Repair> viewPendingRepairs() {
         return technicianService.viewPendingRepairs();
     }
 
     @PostMapping("/acceptRepair/{repairID}")
-    public ResponseEntity accept(@PathVariable("repairID") Long repairID) {
+    public ResponseEntity<HttpStatus> accept(@PathVariable("repairID") Long repairID) {
         technicianService.acceptRepair(repairID);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/viewAcceptedRepairs")
@@ -34,14 +32,14 @@ public class TechnicianController {
     }
 
     @PostMapping("/completeRepair/{repairID}")
-    public ResponseEntity completeRepair(@PathVariable("repairID") Long repairID, @RequestBody RepairRequest repairRequest) {
+    public ResponseEntity<HttpStatus> completeRepair(@PathVariable("repairID") Long repairID, @RequestBody RepairRequest repairRequest) {
         technicianService.completeRepair(repairID, repairRequest.getPrice());
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/rejectRepair/{repairID}")
-    public ResponseEntity rejectRepair(@PathVariable("repairID") Long repairID, @RequestBody RepairRequest repairRequest) {
+    public ResponseEntity<HttpStatus> rejectRepair(@PathVariable("repairID") Long repairID, @RequestBody RepairRequest repairRequest) {
         technicianService.rejectRepair(repairID, repairRequest.getRepairNotes());
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
