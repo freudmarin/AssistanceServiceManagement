@@ -134,8 +134,4 @@ public class UserDetailsServiceImpl implements UserService {
     private UserDto mapToDTO(User user) {
         return mapper.map(user, UserDto.class);
     }
-
-    private User mapToEntity(UserDto userDto) {
-        return mapper.map(userDto, User.class);
-    }
 }

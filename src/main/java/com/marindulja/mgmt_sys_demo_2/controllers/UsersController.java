@@ -20,7 +20,6 @@ public class UsersController {
         return new ResponseEntity<>(userDetailsService.addUser(userDto), HttpStatus.OK);
     }
 
-
     @GetMapping("/")
     public List<UserDto> getAllUsers() {
         return userDetailsService.getAllUsers();

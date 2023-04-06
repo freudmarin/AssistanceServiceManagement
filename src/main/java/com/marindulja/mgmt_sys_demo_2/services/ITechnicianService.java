@@ -2,8 +2,6 @@ package com.marindulja.mgmt_sys_demo_2.services;
 
 
 import com.marindulja.mgmt_sys_demo_2.models.Repair;
-import com.marindulja.mgmt_sys_demo_2.models.RepairStatus;
-import com.marindulja.mgmt_sys_demo_2.specifications.CustomRepairRepository;
 
 import java.util.List;
 
