@@ -16,5 +16,5 @@ public class RepairRequest {
     private String brand;
     private Date dateOfPurchase;
     private Date warrantyExpireDate;
-    private CustomerRequester requester;
+    private CustomerRequest requester;
 }

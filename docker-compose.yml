@@ -13,6 +13,7 @@ services:
       - ./data:/var/lib/postgresql/data
 
   app:
+    image: pc-repair
     build: .
     ports:
       - 8080:8080

@@ -16,7 +16,6 @@ public class AcceptanceController {
 
     @PostMapping("/acceptProduct")
     public void accept(@RequestBody RepairRequest repairRequest) {
-
         accepterService.accept(repairRequest);
     }
 }

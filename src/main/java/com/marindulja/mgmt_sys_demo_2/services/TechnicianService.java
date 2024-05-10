@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -40,8 +41,9 @@ public class TechnicianService implements ITechnicianService {
     // shkruaj unit test
     @Override
     public void acceptRepair(Long repairId) {
-        if (repairRepository.findById(repairId).isPresent()) {
-            Repair repair = repairRepository.findById(repairId).get();
+        Optional<Repair> repairOpt = repairRepository.findById(repairId);
+        if (repairOpt.isPresent()) {
+            Repair repair = repairOpt.get();
             repair.setStatus(RepairStatus.IN_PROGRESS);
             // get the technician from the security context
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -58,8 +60,9 @@ public class TechnicianService implements ITechnicianService {
 
     @Override
     public void rejectRepair(Long repairId, String reason) {
-        if (repairRepository.findById(repairId).isPresent()) {
-            Repair repair = repairRepository.findById(repairId).get();
+        Optional<Repair> repairOpt = repairRepository.findById(repairId);
+        if (repairOpt.isPresent()) {
+            Repair repair = repairOpt.get();
             repair.setStatus(RepairStatus.CANCELED);
             repair.setRepairNotes(reason);
             repairRepository.save(repair);
@@ -68,8 +71,9 @@ public class TechnicianService implements ITechnicianService {
 
     @Override
     public void completeRepair(Long repairId, double price) {
-        if (repairRepository.findById(repairId).isPresent()) {
-            Repair repair = repairRepository.findById(repairId).get();
+        Optional<Repair> repairOpt = repairRepository.findById(repairId);
+        if (repairOpt.isPresent()) {
+            Repair repair = repairOpt.get();
             repair.setStatus(RepairStatus.COMPLETED);
             if (new Date().after(repair.getWarrantyExpireDate())) {
                 repair.setPrice(price);
