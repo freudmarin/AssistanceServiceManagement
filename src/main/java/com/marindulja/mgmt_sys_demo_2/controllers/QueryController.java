@@ -34,7 +34,7 @@ public class QueryController {
     }
 
     @GetMapping(value = "/totalNumberOfRejectedRepairsBetween")
-    public Long  totalNumberOfRejectedRepairsOverPeriodOfTime(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+    public Long  totalNumberOfRejectedRepairsOverTime(@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
                                                                 @RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         return repairRepository.count(spec.repairByStatusAndUpdatedDateTimeBetween(RepairStatus.CANCELED, start, end));
     }

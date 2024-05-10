@@ -68,9 +68,7 @@ public class Repair {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = true)
-    private User technician;    // Handle user role in code or divide users into two separate entities (here is handled in code)
-
-    // ... extra fields
+    private User technician;
 
     @Override
     public boolean equals(Object o) {
